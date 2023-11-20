@@ -1,0 +1,19 @@
+syntax="proto3";
+
+service WorkerServer {
+    rpc StoreFile(FileDataRequest) returns (ErrorResponse) {}
+    rpc SetStratNames(StratNameRequest) returns (ErrorResponse) {}
+}
+
+message FileDataRequest {
+    string data = 1;
+    string title = 2;
+} 
+
+message StratNameRequest {
+    repeated string strat_names = 1;
+}
+
+message ErrorResponse {
+    string error = 1;
+}
