@@ -1,0 +1,14 @@
+syntax="proto3";
+
+service LLMServer {
+    rpc ChatCompletion(ChatRequest) returns (ChatResponse) {}
+}
+
+message ChatRequest {
+    string system_text = 1;
+    string user_text = 2;
+}
+
+message ChatResponse {
+    string text = 1;
+}

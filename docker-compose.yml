@@ -1,40 +1,44 @@
 services:
-    nb:
-        image: nb
-        environment:
-            - JUPYTER_TOKEN=local
-        ports:
-            - "8000:8888"
-        volumes:
-            - "./nb:/home/jovyan/nb"
+    # nb:
+    #     image: nb
+    #     environment:
+    #         - JUPYTER_TOKEN=local
+    #     ports:
+    #         - "8000:8888"
+    #     volumes:
+    #         - "./nb:/home/jovyan/nb"
 
     postgres:
         image: ankane/pgvector
         environment:
-          POSTGRES_DB: vector_db
-          POSTGRES_USER: admin
-          POSTGRES_PASSWORD: admin
+            POSTGRES_DB: vector_db
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: admin
+        ports:
+            - "127.0.0.1:5432:5432"
         deploy:
             resources:
                 limits:
                     memory: 1G
 
     worker-1:
-        image: worker
+        image: node
         depends_on:
-          -  "postgres"
+            - "postgres"
+        command: python3 worker.py
 
     worker-2:
-        image: worker
+        image: node
         depends_on:
-          -  "postgres"
+            - "postgres"
+        command: python3 worker.py
 
     master:
-        image: master
+        image: node
         command: bash -c "python3 init_db.py && python3 master.py worker-1 worker-2"
         # command: sleep infinity
         volumes:
-         - "./data:/data"
+            - "./data:/data"
         depends_on:
-          -  "worker-1"
-          -  "worker-2"
+            - "worker-1"
+            - "worker-2"

@@ -3,6 +3,8 @@ syntax="proto3";
 service WorkerServer {
     rpc StoreFile(FileDataRequest) returns (ErrorResponse) {}
     rpc SetStratNames(StratNameRequest) returns (ErrorResponse) {}
+    rpc SetQueries(QueryRequest) returns (ErrorResponse) {}
+    rpc GenerateFacts(FactRequest) returns (ErrorResponse) {}
 }
 
 message FileDataRequest {
@@ -12,6 +14,14 @@ message FileDataRequest {
 
 message StratNameRequest {
     repeated string strat_names = 1;
+}
+
+message QueryRequest {
+    repeated string queries = 1;
+}
+
+message FactRequest {
+    string strat_name = 1;
 }
 
 message ErrorResponse {

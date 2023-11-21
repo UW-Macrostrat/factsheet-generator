@@ -24,6 +24,16 @@ class WorkerServerStub(object):
                 request_serializer=workerserver__pb2.StratNameRequest.SerializeToString,
                 response_deserializer=workerserver__pb2.ErrorResponse.FromString,
                 )
+        self.SetQueries = channel.unary_unary(
+                '/WorkerServer/SetQueries',
+                request_serializer=workerserver__pb2.QueryRequest.SerializeToString,
+                response_deserializer=workerserver__pb2.ErrorResponse.FromString,
+                )
+        self.GenerateFacts = channel.unary_unary(
+                '/WorkerServer/GenerateFacts',
+                request_serializer=workerserver__pb2.FactRequest.SerializeToString,
+                response_deserializer=workerserver__pb2.ErrorResponse.FromString,
+                )
 
 
 class WorkerServerServicer(object):
@@ -41,6 +51,18 @@ class WorkerServerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetQueries(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GenerateFacts(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_WorkerServerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -52,6 +74,16 @@ def add_WorkerServerServicer_to_server(servicer, server):
             'SetStratNames': grpc.unary_unary_rpc_method_handler(
                     servicer.SetStratNames,
                     request_deserializer=workerserver__pb2.StratNameRequest.FromString,
+                    response_serializer=workerserver__pb2.ErrorResponse.SerializeToString,
+            ),
+            'SetQueries': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetQueries,
+                    request_deserializer=workerserver__pb2.QueryRequest.FromString,
+                    response_serializer=workerserver__pb2.ErrorResponse.SerializeToString,
+            ),
+            'GenerateFacts': grpc.unary_unary_rpc_method_handler(
+                    servicer.GenerateFacts,
+                    request_deserializer=workerserver__pb2.FactRequest.FromString,
                     response_serializer=workerserver__pb2.ErrorResponse.SerializeToString,
             ),
     }
@@ -94,6 +126,40 @@ class WorkerServer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/WorkerServer/SetStratNames',
             workerserver__pb2.StratNameRequest.SerializeToString,
+            workerserver__pb2.ErrorResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SetQueries(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/WorkerServer/SetQueries',
+            workerserver__pb2.QueryRequest.SerializeToString,
+            workerserver__pb2.ErrorResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GenerateFacts(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/WorkerServer/GenerateFacts',
+            workerserver__pb2.FactRequest.SerializeToString,
             workerserver__pb2.ErrorResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

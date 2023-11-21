@@ -12,9 +12,6 @@ with psycopg.connect(conninfo=conninfo) as conn:
         cur.execute(
             """
                 CREATE EXTENSION IF NOT EXISTS vector;
-                DROP TABLE IF EXISTS chunk_lookup;
-                DROP TABLE IF EXISTS strat_name_loopup;
-                DROP TABLE IF EXISTS chunk_data;
             """
         )
 
@@ -29,42 +26,39 @@ with psycopg.connect(conninfo=conninfo) as conn:
             """
         )
 
-        cur.execute(
-            """
-                CREATE TABLE strat_name_lookup (
-                    strat_name_id INT GENERATED ALWAYS AS IDENTITY,
-                    strat_name varchar(100),
-                    PRIMARY KEY(strat_name_id)
-                );
-            """
-        )
+        # cur.execute(
+        #     """
+        #         CREATE TABLE strat_name_lookup (
+        #             strat_name_id INT GENERATED ALWAYS AS IDENTITY,
+        #             strat_name varchar(100),
+        #             PRIMARY KEY(strat_name_id)
+        #         );
+        #     """
+        # )
 
-        cur.execute(
-            """
-                CREATE TABLE chunk_lookup (
-                    strat_name_id INT,
-                    chunk_id INT,
-                    PRIMARY KEY(strat_name_id, chunk_id),
-                    FOREIGN KEY(strat_name_id) 
-                        REFERENCES strat_name_lookup(strat_name_id),
-                    FOREIGN KEY(chunk_id) 
-                        REFERENCES chunk_data(chunk_id)
-                );
-            """
-        )
-        
-        
-        
-        cur.execute(
-            """
-                CREATE TABLE factsheets (
-                    strat_name_id INT,
-                    %s,
-                    PRIMARY KEY(strat_name_id)
-                );
-            """
-            , 
-        )
+        # cur.execute(
+        #     """
+        #         CREATE TABLE chunk_lookup (
+        #             strat_name_id INT,
+        #             chunk_id INT,
+        #             PRIMARY KEY(strat_name_id, chunk_id),
+        #             FOREIGN KEY(strat_name_id) 
+        #                 REFERENCES strat_name_lookup(strat_name_id),
+        #             FOREIGN KEY(chunk_id) 
+        #                 REFERENCES chunk_data(chunk_id)
+        #         );
+        #     """
+        # )
+
+        # cur.execute(
+        #     """
+        #         CREATE TABLE factsheets (
+        #             strat_name_id INT,
+        #             %s,
+        #             PRIMARY KEY(strat_name_id)
+        #         );
+        #     """,
+        # )
 
         conn.commit()
 

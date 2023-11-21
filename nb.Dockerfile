@@ -1,3 +1,5 @@
 FROM jupyter/datascience-notebook
 
-RUN pip install "psycopg[binary, pool]" pgvector --break-system-packages
+COPY requirements.txt ./
+
+RUN pip install --no-cache-dir -r requirements.txt
