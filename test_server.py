@@ -11,10 +11,10 @@ from embeddings.huggingface import HuggingFaceEmbedding
 
 class LLM(llm_pb2_grpc.LLMServerServicer):
     def __init__(self, llm: Llama):
-        self.llama = llm
+        # self.llama = llm
         self.bge = HuggingFaceEmbedding(
             model_name="BAAI/bge-small-en",
-            device="mps",
+            device="cuda:0",
             instruction="Represent this sentence for searching relevant passages: ",
         )
 
@@ -46,14 +46,16 @@ class LLM(llm_pb2_grpc.LLMServerServicer):
 
 
 async def serve(port: int) -> None:
-    llama = Llama(
-        model_path="./models/openhermes-2.5-mistral-7b.Q4_K_M.gguf", n_ctx=4000
-    )
+    # llama = Llama(
+    #     model_path="./models/openhermes-2.5-mistral-7b.Q4_K_M.gguf", n_ctx=4000
+    # )
+    llama = None
 
     server = grpc.aio.server()
     llm_pb2_grpc.add_LLMServerServicer_to_server(LLM(llama), server)
     listen_addr = f"[::]:{port}"
     server.add_insecure_port(listen_addr)
+    print("Starting server on", listen_addr)    
     await server.start()
     await server.wait_for_termination()
 
