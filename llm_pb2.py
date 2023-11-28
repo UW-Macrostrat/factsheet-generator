@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tllm.proto\"5\n\x0b\x43hatRequest\x12\x13\n\x0bsystem_text\x18\x01 \x01(\t\x12\x11\n\tuser_text\x18\x02 \x01(\t\"\x1c\n\x0c\x43hatResponse\x12\x0c\n\x04text\x18\x01 \x01(\t2<\n\tLLMServer\x12/\n\x0e\x43hatCompletion\x12\x0c.ChatRequest\x1a\r.ChatResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tllm.proto\"5\n\x0b\x43hatRequest\x12\x13\n\x0bsystem_text\x18\x01 \x01(\t\x12\x11\n\tuser_text\x18\x02 \x01(\t\"\x1c\n\x0c\x43hatResponse\x12\x0c\n\x04text\x18\x01 \x01(\t\"2\n\x10\x45mbeddingRequest\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x10\n\x08is_query\x18\x02 \x01(\x08\"&\n\x11\x45mbeddingResponse\x12\x11\n\tembedding\x18\x01 \x03(\x02\x32r\n\tLLMServer\x12/\n\x0e\x43hatCompletion\x12\x0c.ChatRequest\x1a\r.ChatResponse\"\x00\x12\x34\n\tEmbedding\x12\x11.EmbeddingRequest\x1a\x12.EmbeddingResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -24,6 +24,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_CHATREQUEST']._serialized_end=66
   _globals['_CHATRESPONSE']._serialized_start=68
   _globals['_CHATRESPONSE']._serialized_end=96
-  _globals['_LLMSERVER']._serialized_start=98
-  _globals['_LLMSERVER']._serialized_end=158
+  _globals['_EMBEDDINGREQUEST']._serialized_start=98
+  _globals['_EMBEDDINGREQUEST']._serialized_end=148
+  _globals['_EMBEDDINGRESPONSE']._serialized_start=150
+  _globals['_EMBEDDINGRESPONSE']._serialized_end=188
+  _globals['_LLMSERVER']._serialized_start=190
+  _globals['_LLMSERVER']._serialized_end=304
 # @@protoc_insertion_point(module_scope)

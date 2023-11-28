@@ -19,12 +19,23 @@ class LLMServerStub(object):
                 request_serializer=llm__pb2.ChatRequest.SerializeToString,
                 response_deserializer=llm__pb2.ChatResponse.FromString,
                 )
+        self.Embedding = channel.unary_unary(
+                '/LLMServer/Embedding',
+                request_serializer=llm__pb2.EmbeddingRequest.SerializeToString,
+                response_deserializer=llm__pb2.EmbeddingResponse.FromString,
+                )
 
 
 class LLMServerServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def ChatCompletion(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Embedding(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -37,6 +48,11 @@ def add_LLMServerServicer_to_server(servicer, server):
                     servicer.ChatCompletion,
                     request_deserializer=llm__pb2.ChatRequest.FromString,
                     response_serializer=llm__pb2.ChatResponse.SerializeToString,
+            ),
+            'Embedding': grpc.unary_unary_rpc_method_handler(
+                    servicer.Embedding,
+                    request_deserializer=llm__pb2.EmbeddingRequest.FromString,
+                    response_serializer=llm__pb2.EmbeddingResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,5 +78,22 @@ class LLMServer(object):
         return grpc.experimental.unary_unary(request, target, '/LLMServer/ChatCompletion',
             llm__pb2.ChatRequest.SerializeToString,
             llm__pb2.ChatResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Embedding(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/LLMServer/Embedding',
+            llm__pb2.EmbeddingRequest.SerializeToString,
+            llm__pb2.EmbeddingResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

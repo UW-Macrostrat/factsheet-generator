@@ -32,9 +32,9 @@ async def store_file(
     async with grpc.aio.insecure_channel(f"{ip_address}:50051") as channel:
         stub = workerserver_pb2_grpc.WorkerServerStub(channel)
 
-        await stub.SetStratNames(
-            workerserver_pb2.StratNameRequest(strat_names=strat_names)
-        )
+        # await stub.SetStratNames(
+        #     workerserver_pb2.StratNameRequest(strat_names=strat_names)
+        # )
 
         while True:
             item = await queue.get()

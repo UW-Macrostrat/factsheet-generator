@@ -5,8 +5,6 @@ from pydantic import BaseModel
 
 
 class MessageRole(Enum):
-    """Message role."""
-
     SYSTEM = "system"
     USER = "user"
     ASSISTANT = "assistant"
