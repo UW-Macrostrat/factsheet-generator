@@ -21,6 +21,8 @@ import preprocessing
 from database_utils import retrieve_chunks, insert_chunk, store_facts
 
 from embeddings.huggingface import HuggingFaceEmbedding
+from llms.llamacpp import LlamaCPPLLM
+from llms.base import Message, MessageRole
 
 conninfo = "dbname=vector_db host=postgres user=admin password=admin port=5432"
 
@@ -41,6 +43,8 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
             instruction="Represent this sentence for searching relevant passages: ",
         )
 
+        self.llm = LlamaCPPLLM("llm_server:8080", 4000)
+
     async def set_connection(self, conn: psycopg.AsyncConnection) -> None:
         await register_vector_async(conn)
         self.conn = conn
@@ -49,11 +53,33 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
         self, text: str, is_query: bool
     ) -> NDArray[np.float32]:
         # await asyncio.sleep(0.1)
-        return np.array([0, 0, 0], dtype=np.float32)
-        # return self.embedding.get_text_embedding(text, is_query)
+        # return np.array([0, 0, 0], dtype=np.float32)
+        return self.embedding.get_text_embedding(text, is_query)
 
     async def generate_response(self, query: str, context: list[str]) -> str:
-        return query + str(context)
+        system_prompt = """
+        You are an AI assistant that helps people find information.
+        """
+
+        prompt = """
+        Context information is below.
+        ---------------------
+        {context_str}
+        ---------------------
+        Given the context information and not prior knowledge, answer the query. Be concise and keep your answer under 100 words.
+        Query: {query_str}
+        Answer: 
+        """
+
+        messages = [
+            Message(MessageRole.SYSTEM, system_prompt),
+            Message(
+                MessageRole.USER,
+                prompt.format(query_str=query, context_str="\n".join(context)),
+            ),
+        ]
+
+        return await self.llm.async_chat(messages, max_tokens=200)
 
     async def StoreFile(
         self,

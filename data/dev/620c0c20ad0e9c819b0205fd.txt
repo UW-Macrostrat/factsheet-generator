@@ -1,0 +1,2074 @@
+High River Gold Mines Ltd
+Addendum to the Taparko-Bouroum Project,
+Burkina Faso, 43-101 F1 Technical Report, November
+2003
+Report Prepared for
+High River Gold Mines Ltd.
+Report Prepared by
+STEFFEN ROBERTSON AND KIRSTEN (CANADA) INC. Suite 602, 357 Bay Street Toronto, ON M5H 2T7 Tel: (416) 601-1445 Fax: (416) 601-9046
+Web Address: www.srk.com E-mail: toronto@srk.com
+Project Reference Number: 3CH006.04
+March 2004
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+
+Page i
+
+Table of Contents
+Table of Contents ..........................................................................................................................i List of Tables ................................................................................................................................ii
+
+1 Introduction and Scope of Report .............................................................................. 1
+
+2 Work Program .............................................................................................................. 1
+
+3 Program Results .......................................................................................................... 1
+3.1 Waste Dump Design ........................................................................................................... 1 3.2 Modification of the Production Schedule............................................................................. 1 3.3 Fleet Estimation .................................................................................................................. 4 3.4 Mine Operating Costs ......................................................................................................... 6 3.5 Sensitivity on Whittle Pit-shells ........................................................................................... 7
+
+4 References.................................................................................................................... 9
+
+Appendix 1 ....................................................................................................................... 10
+Figures of the Open Pit and Waste Dump Designs
+
+Appendix 2 ....................................................................................................................... 11
+Figures of the Year End Pit Plans
+
+Appendix 3 ....................................................................................................................... 12
+Details of the Mining Cost Estimation
+
+Appendix 4 ....................................................................................................................... 13
+Quotes for Drilling and Blasting Cost Estimation
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:17 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+
+Page ii
+
+List of Tables
+
+Table 1: Modified Production Schedule............................................................................................. 2 Table 2: Required Waste Volume for Tailings and Water Dams....................................................... 4 Table 3: Summary of the Mining and Ancillary Fleet Estimation ....................................................... 5 Table 4: Mine Operating Cost Details by Rock Type ........................................................................ 6 Table 5: Ore Haulage Cost from Bouroum to Taparko...................................................................... 7 Table 6: Summary of Mine Operating Costs ..................................................................................... 7 Table 7: Plant Cut-off Grades (Gold Price: $400/oz)......................................................................... 8 Table 8: Result of the Sensitivity on Pit-shells .................................................................................. 8 Table 9: Actual and Estimated Pit Bottom Elevations ....................................................................... 8
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:14 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+
+Page 1
+
+1 Introduction and Scope of Report
+Steffen Robertson and Kirsten (Canada) Inc. (“SRK”) has been commissioned by High River Gold Ltd. (“HRG”) to update the mining cost estimation in the “Open Pit Mine Study on Taparko and Bouroum Deposits” report, prepared in October 2003. The Taparko deposit is owned by HRG, and the Bouroum deposit is owned by Axmin Inc. The study is based on the assumption that a gold processing plant will be built at the Taparko deposit, and Bouroum ore will be trucked some 49.1km to the plant. The scope of work is as follows:
+
+• Preparing year end pit plans; • Waste dump design; • Modifying the production schedule as necessary, based on the end year pit plans; • Mining and ancillary fleet estimation; • Mining operating cost estimation will be generated from first principles; • The October 2003 report will be updated; • Figures of the designs will be attached to the report.
+
+2 Work Program
+The study was carried out during March 2004 at the Toronto office of SRK. The study has been reviewed by Ken Reipas, Principal Mining Engineer, and the work was carried out by Rene Carapetian, Senior Associate Mining Engineer.
+
+3 Program Results
+The summary of the modified production schedule, fleet estimation and mining cost estimation are presented in this section.
+
+3.1 Waste Dump Design
+Waste dump designs are presented in Appendix 1.
+
+3.2 Modification of the Production Schedule
+Based on the previous production schedule, annual mine plans were generated for each individual pit. The annual mine plans show the approximate pit face position at the end of each year. Accessibility for drilling, loading and hauling equipment, together with the availability of exposed ore were taken into consideration in preparing the mine plans.
+By reviewing the pit plans it was envisaged that in Pit 3/5 modification to the production schedule was required in years 2 to 4 in order to maintain the supply of ore in year 4 at the scheduled rate. In total, 750kt of Saprolite waste, from year 4, has been brought forward in the schedule to years 2 and 3. The year end mine plans were then modified accordingly. These plans are presented in Appendix 2.
+The modified production schedule is presented in Table 1.
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:09 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+Table 1: Modified Production Schedule
+
+Page 2
+
+Production Period Pre-strip
+
+kt g/t Au
+
+Taparko
+
+3/5
+
+Oxide Ore
+
+4 1.92
+
+Transition Ore
+
+Sulphide Ore
+
+Saprolite Waste
+
+813
+
+Saprock Waste
+
+Fresh Waste
+
+19
+
+Sub-Total Ore
+
+4 1.92
+
+Sub-Total Waste
+
+832
+
+GT
+
+Oxide Ore
+
+14 2.72
+
+Transition Ore
+
+Sulphide Ore
+
+Saprolite Waste
+
+187
+
+Saprock Waste
+
+Fresh Waste
+
+Sub-Total Ore
+
+14 2.72
+
+Sub-Total Waste
+
+187
+
+2N/2K
+
+Oxide Ore
+
+6 1.39
+
+Transition Ore
+
+Sulphide Ore
+
+Saprolite Waste
+
+104
+
+Saprock Waste
+
+Fresh Waste
+
+5
+
+Sub-Total Ore
+
+6 1.39
+
+Sub-Total Waste
+
+109
+
+Total Taparko Ore
+
+24 2.25
+
+Total Taparko Waste 1,127
+
+1 kt g/t Au
+
+343 2.51
+
+1,932
+
+79 343 2,011
+
+2.51
+
+164 3.41
+
+1,036 20 99
+164 1,155
+
+3.41
+
+507 2.80 3,166
+
+2 kt g/t Au
+
+3 kt g/t Au
+
+Year
+45 kt g/t Au kt g/t Au
+
+6 kt g/t Au
+
+Total Production 7 8 Years 1 to 8
+kt g/t Au kt g/t Au kt g/t Au
+
+636
+1,967 22
+636 1,989
+
+2.68 439 2.87 820
+
+3,212 228
+2.68 439 3,440
+
+2,142 2,370
+372 2.87 820
+4,884
+
+2.82 965 33 2
+600 1,684 3,216 2.82 1,000 5,500
+
+2.91 247 2.68
+
+2.93 476 2.90 2 5.55
+
+2.63 190 2.67 476 3.11
+
+21
+
+8
+
+1,848
+
+625
+
+2.91 913 2.79 479 3.12
+
+1,877
+
+625
+
+3,449 511 668
+9,873 4,311 6,140 4,629 20,324
+
+2.79 2.92 2.98
+2.83
+
+179 3.75 174 4.33
+
+3 6.13
+
+1 2.97 141 3.43 29 4.86
+
+39 4.08 148 3.98
+
+919 13
+
+616 79
+
+470 1,639
+
+256
+
+180 3.75 353 3.94 180 4.16
+
+2,005
+
+1,731
+
+256
+
+521 171 186 1,968 714 2,465 878 5,147
+
+3.85 3.67 4.00
+3.85
+
+816 3,993
+
+2.92 792 3.35 1,000
+
+5,171
+
+5,140
+
+3.06 1,000 5,500
+
+87
+325
+9 87 333 2.91 1,000 2,210
+
+2.11 521
+1,291 34
+2.11 521 1,325
+2.73 1,000 1,950
+
+1.65 530 73 10
+1,300 544 445
+1.65 612 2,289
+2.35 612 2,289
+
+1.95 1,138 2.38 73 2.32 10
+3,133 578 453
+2.01 1,221 4,165
+2.01 6,728 29,636
+
+1.83 2.38 2.32
+1.87 2.79
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+
+Page 3
+
+Production Period
+Bouroum Bissinga Oxide Ore Sulphide Ore Saprolite Waste Fresh Waste Sub-Total Ore Sub-Total Waste Welcome Stranger Oxide Ore Sulphide Ore Saprolite Waste Fresh Waste Sub-Total Ore Sub-Total Waste
+F12 Oxide Ore Transition Ore Sulphide Ore Saprolite Waste Fresh Waste Sub-Total Ore Sub-Total Waste Total Bouroum Ore Total Bouroum Waste
+TOTAL Ore TOTAL Waste
+
+Pre-strip kt g/t Au
+
+1 kt g/t Au
+
+2 kt g/t Au
+
+3 kt g/t Au
+
+Year
+45 kt g/t Au kt g/t Au
+
+6 kt g/t Au
+
+7 kt g/t Au
+
+(Table 1 continued)
+Total Production 8 Years 1 to 8
+kt g/t Au kt g/t Au
+
+82 7.87 4 5.62
+151 326
+86 7.76 476
+
+82 7.87 4 5.62
+151 326
+86 7.76 476
+
+117 1
+710 845 118 1,556
+
+5.43 1.65
+5.41
+
+117 1
+710 845 118 1,556
+
+5.43 1.65
+5.41
+
+24 1,127
+
+383
+1,703 629 383
+2,332 469
+2,809 2.25 976
+5,974
+
+3.09 66 3.59 208 3.34
+
+969 872
+
+3.09 66 3.59 208 3.34
+
+969 872
+
+3.95 184 4.75 208 3.34
+
+2,524
+
+872
+
+3.35 1,000 3.25 1,000 3.35 1,000 3.06 1,000
+
+6,518
+
+6,043
+
+5,140
+
+5,500
+
+2.91 1,000 2,210
+
+2.73 1,000 1,950
+
+2.35 612 2,289
+
+383 66
+208 1,703 2,470
+657 4,173
+861 6,205
+2.01 7,589 35,841
+
+3.09 3.59 3.34
+3.22 3.97
+2.92
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+
+Page 4
+
+3.3 Fleet Estimation
+
+Mining and ancillary fleet estimation have been carried out taking into consideration the modified production schedule, average annual haul distances based on the prepared year end pit plans, average truck speeds, shift roster and the available hours per year, assumptions on the equipment availability and utilization, and the selected equipment in the previous study. For the secondary ancillary equipment, utilized hours have not been estimated.
+Requirements for hauling waste to the tailings dam and the water dam were also considered in the haul distance estimation. The annual waste volumes, presented in Table 2, were provided by HRG. The average haul distance from south edge of pit 3/5 to the tailings dam is one kilometre and the haul distance to water dam is 1.9km.
+
+Table 2: Required Waste Volume for Tailings and Water Dams
+
+Pre- Year Dump Site strip 1
+Tailings Dam 550 140
+Water Dam 110
+-Volumes in thousands cubic meter
+
+Year 2
+140
+
+Year 3
+140
+
+Year 4
+140
+
+Year 5
+300
+
+Year 6
+300
+
+Year Year 78
+
+Table 3 presents the estimated equipment operating hours and the required units per year during the life of the project.
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+
+Page 5
+
+Table 3: Summary of the Mining and Ancillary Fleet Estimation
+
+Year Drilling Machine Required Units Operating Hours
+Excavator Required Units Operating Hours
+Loader Required Units Operating Hours
+Haul-Trucks Required Units Operating Hours
+Track-dozers Required Units Operating Hours
+Grader 14' Required Units Operating Hours
+Water-Trucks Required Units Operating Hours
+Service Truck Required Units Operating Hours
+Utility Loader Required Units Operating Hours
+Semi-Tractor Required Units Operating Hours
+Low-Bed Trailer Required Units Operating Hours
+Mobile Crane Required Units Operating Hours
+Pick-up Trucks ATV
+Truck Boom Crane 15t Truck
+Fuel Semi-Trailer Carry all Handler
+
+Prestrip
+1 30
+1 1,797
+1 500
+3 8,210
+2 6,170
+1 3,100
+1 4,050
+1 1,000
+1 1,000
+1 1,300
+1 800
+1 1,000
+3 10 1 1 1 1
+
+Year 1 Year 2 Year 3 Year 4 Year 5 Year 6 Year 7
+
+2 2 22221 1,900 4,800 6,100 3,100 8,100 5,900 2,000
+
+2 2 22222 11,820 11,820 11,820 11,820 11,820 5,363 4,611
+
+1 1 11111 3,500 3,500 3,500 3,500 2,000 1,400 1,200
+
+8 10 10 9 10 5 4 45,270 52,920 55,280 50,750 56,330 29,170 23,400
+
+2 2 22222 9,260 9,260 9,260 7,710 6,170 7,710 7,710
+
+1 1 11111 5,140 5,140 5,140 4,370 3,600 4,370 4,370
+
+2 2 22222 7,660 7,660 7,660 6,170 3,860 5,140 5,140
+
+1 1 11111 2,500 2,500 2,500 2,500 2,000 2,000 2,000
+
+1 1 11111 3,000 3,000 3,000 3,000 2,500 2,500 2,500
+
+1 1 11111 2,500 2,500 2,500 2,500 2,000 2,000 2,000
+
+1 1 11111 2,000 2,000 2,000 2,000 1,700 1,700 1,700
+
+1 2,000
+3 10 1 1 1 1
+
+1 2,000
+3 10 1 1 1 1
+
+1 2,000
+3 10 1 1 1 1
+
+1 2,000
+3 10 1 1 1 1
+
+1 1,500
+3 10 1 1 1 1
+
+1 1,500
+3 10 1 1 1 1
+
+1 1,500
+3 10 1 1 1 1
+
+Year 8
+1 2,300
+2 4,535
+1 750
+4 22,440
+2 5,140
+1 2,570
+2 4,120
+1 1,200
+1 1,500
+1 1,200
+1 800
+1 1,000
+3 10 1 1 1 1
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+3.4 Mine Operating Costs
+
+Page 6
+
+Mine operating costs have been calculated by SRK from first principles, augmented with quotes from suppliers, manufacturers, and contractors. The “Western Mine Engineering” handbook was used for estimation of the equipment maintenance costs.
+A summary of the estimated unit mine operating costs is presented in Table 4. The estimation is based on an owner-operated mine. Compared to the October 2003 cost study, the cost of grade control has been added to the estimated costs. Also, the cost of dewatering has been estimated for Saprolite and Sap-rock as well as for Fresh rock.
+It was decided by HRG to exclude the cost of equipment overhauls from the maintenance operating cost. In the project financial model this item will be included in the sustaining capital costs.
+
+Table 4: Mine Operating Cost Details by Rock Type (US$/t)
+
+Cost Item SAPROLITE
+Drilling Blasting Loading Hauling Ancillary Equipment Personnel Grade Control Ore Dewatering
+Total Ore Total Waste SAPROCK Drilling
+Ore Waste Blasting
+Ore Waste Loading Hauling Ancillary Equipment Personnel Ore Grade Control Dewatering Total Ore Total Waste FRESH ROCK Drilling
+Ore Waste Blasting
+Ore Waste Loading Hauling Ancillary Equipment Personnel Ore Grade Control Dewatering Total Ore Total Waste
+
+Year 1
+0.12 0.27 0.15 0.27 0.07 0.01 0.88 0.81
+0.03 0.02
+0.10 0.10 0.12 0.27 0.15 0.27 0.07 0.01 1.02 0.94
+0.09 0.08
+0.15 0.09 0.12 0.27 0.15 0.27 0.07 0.02 1.13 1.00
+
+Year 2
+0.11 0.29 0.14 0.26 0.07 0.01 0.88 0.81
+0.03 0.02
+0.09 0.07 0.11 0.29 0.14 0.26 0.07 0.01 1.00 0.90
+0.09 0.08
+0.10 0.07 0.11 0.29 0.14 0.26 0.07 0.02 1.08 0.96
+
+Year 3
+0.12 0.32 0.15 0.27 0.07 0.01 0.94 0.87
+0.03 0.02
+0.13 0.10 0.12 0.32 0.15 0.27 0.07 0.01 1.10 0.99
+0.09 0.08
+0.14 0.09 0.12 0.32 0.15 0.27 0.07 0.02 1.19 1.05
+
+Year 4
+0.14 0.35 0.15 0.28 0.07 0.01 1.01 0.94
+0.03 0.02
+0.08 0.06 0.14 0.35 0.15 0.28 0.07 0.01 1.12 1.03
+0.09 0.08
+0.09 0.06 0.14 0.35 0.15 0.28 0.07 0.02 1.21 1.08
+
+Year 5 Year 6 Year 7 Year 8
+------0.13 0.11 0.11 0.11 0.37 0.36 0.34 0.33 0.11 0.25 0.29 0.21 0.22 0.39 0.44 0.34 0.07 0.07 0.07 0.07 0.01 0.01 0.01 0.01 0.91 1.21 1.27 1.07 0.84 1.13 1.20 0.99
+
+0.03 0.02
+
+0.03 0.02
+
+0.03 0.02
+
+0.03 0.02
+
+0.11 0.14 0.22 0.14 0.08 0.14 0.15 0.10 0.13 0.11 0.11 0.11 0.37 0.36 0.34 0.33 0.11 0.25 0.29 0.21 0.22 0.39 0.44 0.34 0.07 0.07 0.07 0.07 0.01 0.01 0.01 0.01 1.05 1.37 1.52 1.23 0.94 1.29 1.38 1.11
+
+0.09 0.08
+
+0.09 0.08
+
+0.09 0.08
+
+0.09 0.08
+
+0.12 0.19 0.25 0.15 0.08 0.11 0.12 0.08 0.13 0.11 0.11 0.11 0.37 0.36 0.34 0.33 0.11 0.25 0.29 0.21 0.22 0.39 0.44 0.34 0.07 0.07 0.07 0.07 0.02 0.02 0.02 0.02 1.14 1.50 1.62 1.32 1.01 1.33 1.41 1.16
+
+Average
+0.12 0.32 0.17 0.30 0.07 0.01 0.99 0.92
+0.03 0.02
+0.11 0.07 0.12 0.32 0.17 0.30 0.07 0.01 1.13 1.02
+0.09 0.08
+0.16 0.09 0.12 0.32 0.17 0.30 0.07 0.02 1.26 1.10
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+
+Page 7
+
+Additional costs to haul ore from Bouroum to the plant at Taparko have been obtained by HRG in Burkina Faso from contractors, and are presented in Table 5.
+
+Table 5: Ore Haulage Cost from Bouroum to Taparko
+
+Item Haulage Distance Cost Per Tonne-km Incremental Cost Per Tonne Ore
+
+Bissinga 44km
+US$3.43/t
+
+F12 and Welcome Stranger 49.1km
+US$0.078/tkm US$3.83/t
+
+A summary of the mining costs by project site is presented in Table 6.
+
+Table 6: Summary of Mine Operating Costs (US$/t)
+
+Rock Type Taparko
+Ore - Saprolite Ore - Saprock Ore - Sulphide Waste - Saprolite Waste - Saprock Waste - Sulphide
+Bouroum Ore - Saprolite Ore - Saprock Ore - Sulphide Waste - Saprolite Waste - Saprock Waste - Sulphide Ore Transport from
+Bouroum
+
+Year 1 Year 2 Year 3
+0.88 0.88 0.94 1.02 1.00 1.10 1.13 1.08 1.19 0.81 0.81 0.87 0.94 0.90 0.99 1.00 0.96 1.05
+0.88 0.88 0.94 1.02 1.00 1.10 1.13 1.08 1.19 0.81 0.81 0.87 0.94 0.90 0.99 1.00 0.96 1.05
+3.76 3.83 3.83
+
+Year 4
+1.01 1.12 1.21 0.94 1.03 1.08
+
+Year 5 Year 6 Year 7 Year 8 Average
+0.91 1.21 1.27 1.07 0.99 1.05 1.37 1.52 1.23 1.13 1.14 1.50 1.62 1.32 1.26 0.84 1.13 1.20 0.99 0.92 0.94 1.29 1.38 1.11 1.02 1.01 1.33 1.41 1.16 1.10
+
+3.5 Sensitivity on Whittle Pit-shells
+
+SRK was requested by HRG to carry out a volumetric calculation on selected nested pit-shells, using the plant cut-off grades at a higher gold price of $400/oz. It was understood that this exercise would only estimate the effect of the gold price on the project economics and that the results of the volumetric calculation do not represent the optimized reserves at the above mentioned gold price.
+In order to optimize the reserves at $400/oz gold price, following mining parameters would have to be adjusted:
+• Ore and waste haulage cost, due to longer haul distances to waste dump and crusher; • Pit slope angle, due to deeper pits and longer in-pit ramping system.
+Estimated cut-off grade for each rock type is presented in Table 7 and a summary of the results is presented in Table 8. It is envisaged that the higher gold price would result in larger pit-shells and a lower cut-off grade.
+The optimized pit results and the related reserves within designed pits are expected to be less than the reported tonnages in Table 8.
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+
+Page 8
+
+Table 7: Plant Cut-off Grades (Gold Price: $400/oz)
+
+Deposit and Rock Type
+
+Plant Cut-off Grade at US$400/oz
+
+Taparko
+
+Saprolite
+
+0.86 g/t Au
+
+Saprock
+
+0.87 g/t Au
+
+Fresh Oxide
+
+0.88 g/t Au
+
+Transition
+
+1.02 g/t Au
+
+Sulphide
+
+1.04 g/t Au
+
+F12 and Welcome Stranger
+
+Saprolite
+
+1.15 g/t Au
+
+Fresh Oxide
+
+1.17 g/t Au
+
+Transition
+
+1.28 g/t Au
+
+Sulphide
+
+1.30 g/t Au
+
+Bissinga
+
+Saprolite
+
+1.12 g/t Au
+
+Fresh Oxide
+
+1.13 g/t Au
+
+Transition
+
+1.24 g/t Au
+
+Sulphide
+
+1.26 g/t Au
+
+Bouroum Taparko
+
+Table 8: Result of the Sensitivity on Pit-shells
+
+Deposit
+3/5 GT 2N/2K Total Bissinga F12 and Welcome Stranger
+Total
+
+Above Cut-off Tonnage
+Mt g/t 9.8 2.50 3.9 3.10 2.3 1.83 16.0 2.55 0.10 7.13
+1.1 3.31
+1.2 3.64
+
+Waste
+Mt 30.4 11.9 13.5 55.9 0.36
+7.2
+7.6
+
+StripRatio
+3.1 3.1 5.9 3.5 3.6
+6.8
+6.5
+
+Pit bottom elevations for the designed pits and the estimated bottom elevations at a gold price of $400/oz are presented in Table 9.
+
+Table 9: Actual and Estimated Pit Bottom Elevations
+
+Deposit
+Taparko 3/5 GT
+2N/2K Bouroum Bissinga F12 and Welcome Stranger
+
+Bottom Bench Elevation
+
+Designed Pit
+
+Estimated Pits
+
+165m 195m 225m
+
+155m 160m 220m
+
+291m 251m 246m
+
+286m 221m 226m
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+
+Page 9
+
+4 References
+SRK Consulting. Open Pit Mine Study on Taparko and Bouroum Deposits (Toronto, Canada, 2003)
+
+SRK Consulting. Production Schedule Study on the Taparko and Bouroum Deposits, Burkina Faso. (Toronto, Canada, June 2003)
+
+Strathcona Mineral Services Limited. Review of the Taparko Project, Burkina Faso. (Toronto, Canada, 2001)
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+Appendix 1
+Figures of the Open Pit and Waste Dump Designs
+
+Page 10
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+Appendix 2
+Figures of the Year End Pit Plans
+
+Page 11
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+Appendix 3
+Details of the Mining Cost Estimation
+
+Page 12
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+Shift Roster and Estimation of the Utilized Hours
+
+Mine Site
+
+TAPARKO
+
+BOUROUM
+
+Days Per Year
+
+365
+
+365
+
+Weather Delay
+
+5
+
+15
+
+Holiday/no work days
+
+5
+
+5
+
+Work Days
+
+355 345
+
+Shift per day Hours per shift Shift-off-days
+
+2 12 52
+
+2 12 52
+
+Available operating days
+
+303
+
+293
+
+Work hours Shift delays (1.5 hours/sh)
+Work hours - shift delay
+
+7,272 909 6,363
+
+7,032 879 6,153
+
+Average Mechanical Availability
+
+Truck
+
+92%
+
+Loading
+
+90%
+
+Drilling
+
+70%
+
+Other
+
+85%
+
+Available Hours
+
+Truck
+
+5,860
+
+Loading
+
+5,730
+
+Drilling
+
+4,460
+
+Other
+
+5,410
+
+92% 90% 70% 85%
+5,670 5,540 4,310 5,240
+
+Efficiency factor
+Truck Loading Drilling
+Other
+
+95% Utilized Hours
+5,570 5,450 4,240 5,140
+
+5,390 5,270 4,100 4,980
+
+Equipment Operating Cost Estimation (Including Fuel, Lube, Maintenance, Tire, Fuel & Lubricant)
+
+Year
+
+Fuel
+Consumption (l/h)
+
+Cost Per Hour($/h)
+
+Unit
+
+PreStrip
+
+Year 1
+
+Year 2
+
+Year 3
+
+Year 4
+
+Year 5
+
+Year 6
+
+Year 7
+
+Year 8
+
+Excavator
+
+Fuel & Lube
+
+65
+
+$ '000
+
+63
+
+413 413 413 442 442 200 172 170
+
+Maintenance
+
+23.8 $ '000 43
+
+281 281 281 281 281 127 110 108
+
+Total Cost
+
+$ '000 105 694 694 694 723 723 328 282 277
+
+Unit Cost
+
+$/h
+
+58.7
+
+58.7 58.7 58.7 61.1
+
+61.1
+
+61.1
+
+61.1 61.1
+
+Loader
+
+Fuel & Lube
+
+43
+
+$ '000
+
+12
+
+81 81 81 87
+
+49
+
+35
+
+30 19
+
+Maintenance + Tire
+
+21.2 $ '000 11 74 74 74 74 42 30 25 16
+
+Total Cost
+
+$ '000
+
+22
+
+155 155 155 161
+
+92
+
+64
+
+55 34
+
+Unit Cost
+
+$/h
+
+44.3
+
+44.3 44.3 44.3 45.9
+
+45.9
+
+45.9
+
+45.9 45.9
+
+Haul-Trucks
+
+Fuel & Lube
+
+45
+
+$ '000 199 1,095 1,280 1,337 1,313 1,458 755
+
+606 581
+
+Maintenance + Tire
+
+16.7 $ '000 137 754 882 921 846 939 486 390 374
+
+Total Cost
+
+$ '000 335 1,849 2,162 2,258 2,159 2,396 1,241 995 955
+
+Unit Cost
+
+$/h
+
+40.8
+
+40.8 40.8 40.8 42.5
+
+42.5
+
+42.5
+
+42.5 42.5
+
+Track-dozers
+
+Fuel & Lube
+
+50
+
+$ '000 166 249 249 249 222 177 222 222 148
+
+Maintenance
+
+19.0 $ '000 117 176 176 176 146 117 146 146 97
+
+Total Cost
+
+$ '000 283 424 424 424 368 294 368 368 245
+
+Unit Cost
+
+$/h
+
+45.8
+
+45.8 45.8 45.8 47.7
+
+47.7
+
+47.7
+
+47.7 47.7
+
+Grader 14'
+
+Fuel & Lube
+
+20
+
+$ '000
+
+33
+
+55 55 55 50
+
+41
+
+50
+
+50 30
+
+Maintenance + Tire
+
+12.9 $ '000 40 66 66 66 56 46 56 56 33
+
+Total Cost
+
+$ '000
+
+73
+
+121 121 121 107
+
+88
+
+107 107 63
+
+Unit Cost
+
+$/h
+
+23.6
+
+23.6 23.6 23.6 24.4
+
+24.4
+
+24.4
+
+24.4 24.4
+
+Water-Trucks
+
+Fuel & Lube
+
+40
+
+$ '000
+
+87
+
+165 165 165 142
+
+89
+
+118 118 95
+
+Maintenance + Tire
+
+11.9 $ '000 48 92 92 92 74 46 61 61 49
+
+Total Cost
+
+$ '000 135 256 256 256 216 135 180 180 144
+
+Unit Cost
+
+$/h
+
+33.4
+
+33.4 33.4 33.4 35.0
+
+35.0
+
+35.0
+
+35.0 35.0
+
+Utility Loader
+
+Fuel & Lube
+
+20
+
+$ '000
+
+11
+
+32 32 32 35
+
+29
+
+29
+
+29 17
+
+Maintenance + Tire
+
+10.5 $ '000 10 31 31 31 31 26 26 26 16
+
+Total Cost
+
+$ '000
+
+21
+
+64 64 64 66
+
+55
+
+55
+
+55 33
+
+Unit Cost
+
+$/h
+
+21.2
+
+21.2 21.2 21.2 22.0
+
+22.0
+
+22.0
+
+22.0 22.0
+
+Service Truck
+
+Fuel & Lube
+
+10
+
+$ '000
+
+5
+
+13 13 13 14 12 12 12 7
+
+Maintenance
+
+5.6 $ '000 6
+
+14 14 14 14 11 11 11 7
+
+Total Cost
+
+$ '000
+
+11
+
+28 28 28 28
+
+23
+
+23
+
+23 14
+
+Unit Cost
+
+$/h
+
+11.0
+
+11.0 11.0 11.0 11.4
+
+11.4
+
+11.4
+
+11.4 11.4
+
+Semi-Tractor
+
+Fuel & Lube
+
+20
+
+$ '000
+
+14
+
+27 27 27 29
+
+23
+
+23
+
+23 14
+
+Maintenance
+
+5.6 $ '000 7
+
+14 14 14 14 11 11 11 7
+
+Total Cost
+
+$ '000
+
+21
+
+41 41 41 43
+
+34
+
+34
+
+34 21
+
+Unit Cost
+
+$/h
+
+16.4
+
+16.4 16.4 16.4 17.1
+
+17.1
+
+17.1
+
+17.1 17.1
+
+Low-Bed Trailer
+
+Fuel & Lube
+
+Maintenance
+
+3.6 $ '000 3 7 7 7 7 6 6 6 3
+
+Total Cost
+
+$ '000
+
+3
+
+7 77 7
+
+6
+
+6
+
+63
+
+Unit Cost
+
+$/h 3.6 3.6 3.6 3.6 3.6 3.6 3.6 3.6 3.6
+
+Mobile Crane
+
+Fuel & Lube
+
+15
+
+0.0 8 16 16 17 17 13 13 13 9
+
+Maintenance + Tire
+
+4.1 $ '000 4 8 8 8 8 6 6 6 4
+
+Total Cost
+
+$ '000
+
+12
+
+24 24 25 25
+
+19
+
+19
+
+19 13
+
+Unit Cost
+
+$/h
+
+12.2
+
+12.2 12.2 12.7 12.7
+
+12.7
+
+12.7
+
+12.7 12.7
+
+Year
+Pick-up Trucks Total Cost Unit Cost
+ATV Total Cost Unit Cost Truck Boom Crane Total Cost Unit Cost
+15t truck Total Cost Unit Cost
+Mobile Fuel Container Total Cost Unit Cost Carry all Handler Total Cost Unit Cost
+
+Fuel
+Consumption (l/h)
+
+Cost Per Hour($/h)
+
+Unit
+$ '000 $/y
+$ '000 $/y
+$ '000 $/y
+$ '000 $/y
+$ '000 $/y
+$ '000 $/y
+
+PreStrip
+14 6.0
+15 2.0
+8 10.0
+9 12.0
+3 6.0
+6 8.0
+
+Year 1
+
+Year 2
+
+Year 3
+
+18 18 18 6.0 6.0 6.0
+20 20 20 2.0 2.0 2.0
+10 10 10 10.0 10.0 10.0
+12 12 12 12.0 12.0 12.0
+
+6 66 6.0 6.0 6.0
+8 88 8.0 8.0 8.0
+
+Table Continued
+
+Year 4
+
+Year 5
+
+Year 6
+
+Year 7
+
+18 18 18 18 6.0 6.0 6.0 6.0
+
+20 20 20 20 2.0 2.0 2.0 2.0
+
+10 10.0
+
+10 10.0
+
+10 10.0
+
+10 10.0
+
+12 12.0
+
+12 12.0
+
+12 12.0
+
+12 12.0
+
+6666 6.0 6.0 6.0 6.0
+8888 8.0 8.0 8.0 8.0
+
+Year 8
+18 6.0
+20 2.0
+10 10.0
+12 12.0
+5 6.0
+8 8.0
+
+Estimation of the Required Mining Personnel
+
+Year
+
+-1 1 2 3 4 5 6 7 8
+
+A-Technical Staff
+
+Mine Superintendent
+
+1 1 1 1 1 111
+
+Senior Mining Engineer
+
+1 1 1 1 1111
+
+Mine Supervisor
+
+3 3 3 3 3 333
+
+Surveyor
+
+2 2 2 1 1111
+
+Senior Geologist
+
+1 1 1 1 1111
+
+Mining Engineer
+
+3 3 3 2 2222
+
+Geologist
+
+4 4 4 2 2222
+
+Geology Technician
+
+4 4 4 2 2222
+
+Surveying Assistant
+
+2 2 2 1 1111
+
+Mine Clerk
+
+3 3 3 2 2 222
+
+Helper
+
+3 3 3 2 2222
+
+Sub-total A
+
+- 27 27 27 18 18 18 18 18
+
+B-Mine Workshop
+
+Maintenance Superintendent
+
+11 1 1 1 1111
+
+Shop Foreman
+
+33 3 3 3 3 333
+
+Surface Supervisor
+
+11 1 1 1 1111
+
+Electrician
+
+22 2 2 2 2222
+
+Heavy Duty Mechanic
+
+44 4 4 4 4444
+
+Mechanic
+
+33 3 3 3 3333
+
+Welder
+
+22 2 2 2 2222
+
+Tire Repair
+
+22 2 2 2 2222
+
+Maintenance Clerk
+
+11 1 1 1 1 111
+
+Utility Equipment Operator
+
+66 6 6 6 6666
+
+Reagents Operator (Rep. To Surface Super.
+
+22 2 2 2 2222
+
+Tailings Labourer (Rep. to Surf. Super)
+
+33 3 3 3 3333
+
+Secretary
+
+11 1 1 1 1111
+
+Shift Labourer
+
+88 8 8 8 6666
+
+Sub-total B
+
+39 39 39 39 39 37 37 37 37
+
+C-Mine Operation
+
+Drilling Operator
+
+22 4 4 4 4 422
+
+Blaster
+
+11 1 1 1 1111
+
+Blasting Assistant
+
+12 2 2 2 2222
+
+Backhoe Operator
+
+24 4 4 4 4444
+
+Loader Operator
+
+22 2 2 2 2222
+
+Dozer Operator
+
+44 4 4 4 4444
+
+Grader Operator
+
+22 2 2 2 2222
+
+Utility Loader Operator
+
+22 2 2 2 2222
+
+Haul-truck Driver
+
+6 16 20 20 18 20 10 8 8
+
+Water Truck Driver
+
+24 4 4 4 4444
+
+Service Truck Driver
+
+22 2 2 2 2222
+
+Shift Labourer
+
+45 5 5 5 4 444
+
+Sub-total C
+
+30 46 52 52 50 51 41 37 37
+
+Total
+
+69 112 118 118 107 106 96 92 92
+
+Job Title A-Technical Staff Mine Superintendent Senior Mining Engineer Mine Supervisor Surveyor Senior Geologist Mining Engineer Geologist Geology Technician Surveying Assistant Mine Clerk Helper
+Sub-total A B-Mine Workshop Maintenance Superintendent Shop Foreman Surface Supervisor Electrician Heavy Duty Mechanic Mechanic Welder Tire Repair Maintenance Clerk Utility Equipment Operator Reagents Operator (Rep. To Surface Super. Tailings Labourer (Rep. to Surf. Super) Secretary Shift Labourer
+Sub-total B
+
+Estimation of the Annual Salaries for the Mining Personnel
+
+Salary ($/y) Year -1
+
+Year 1 Year 2
+
+Year 3
+
+Year 4
+
+Year 5
+
+100,000 85,000 17,590 19,593 85,000 19,593 19,593 13,474 12,363 12,363 6,531
+
+0
+
+100,000 100,000 100,000
+
+100,000
+
+100,000
+
+0
+
+85,000
+
+85,000
+
+85,000
+
+85,000
+
+85,000
+
+0
+
+52,770
+
+52,770
+
+52,770
+
+52,770
+
+52,770
+
+0
+
+39,186
+
+39,186
+
+39,186
+
+19,593
+
+19,593
+
+0
+
+85,000
+
+85,000
+
+85,000
+
+85,000
+
+85,000
+
+0
+
+58,779
+
+58,779
+
+58,779
+
+39,186
+
+39,186
+
+0
+
+78,372
+
+78,372
+
+78,372
+
+39,186
+
+39,186
+
+0
+
+53,896
+
+53,896
+
+53,896
+
+26,948
+
+26,948
+
+0
+
+24,726
+
+24,726
+
+24,726
+
+12,363
+
+12,363
+
+0
+
+37,089
+
+37,089
+
+37,089
+
+24,726
+
+24,726
+
+0
+
+19,593
+
+19,593
+
+19,593
+
+13,062
+
+13,062
+
+0
+
+634,411 634,411
+
+634,411
+
+497,834
+
+497,834
+
+100,000 17,590 17,590 11,110 11,110 11,110 11,110 11,110 12,363 11,110
+13,100 3,340 12,363 3,340
+
+75,000 39,578 13,193 16,665 33,330 24,998 16,665 16,665 9,272 49,995
+19,650 7,515 9,272 20,040 351,837
+
+100,000 52,770 17,590 22,220 44,440 33,330 22,220 22,220 12,363 66,660
+26,200 10,020 12,363 26,720 469,116
+
+100,000 52,770 17,590 22,220 44,440 33,330 22,220 22,220 12,363 66,660
+26,200 10,020 12,363 26,720 469,116
+
+100,000 52,770 17,590 22,220 44,440 33,330 22,220 22,220 12,363 66,660
+26,200 10,020 12,363 26,720 469,116
+
+100,000 52,770 17,590 22,220 44,440 33,330 22,220 22,220 12,363 66,660
+26,200 10,020 12,363 26,720 469,116
+
+100,000 52,770 17,590 22,220 44,440 33,330 22,220 22,220 12,363 66,660
+26,200 10,020 12,363 20,040 462,436
+
+Year 6
+100,000 85,000 52,770 19,593 85,000 39,186 39,186 26,948 12,363 24,726 13,062 497,834
+100,000 52,770 17,590 22,220 44,440 33,330 22,220 22,220 12,363 66,660
+26,200 10,020 12,363 20,040 462,436
+
+Year 7
+100,000 85,000 52,770 19,593 85,000 39,186 39,186 26,948 12,363 24,726 13,062 497,834
+100,000 52,770 17,590 22,220 44,440 33,330 22,220 22,220 12,363 66,660
+26,200 10,020 12,363 20,040 462,436
+
+Year 8
+75,000 63,750 39,578 14,695 63,750 29,390 29,390 20,211 9,272 18,545 9,797 373,376
+75,000 39,578 13,193 16,665 33,330 24,998 16,665 16,665 9,272 49,995
+19,650 7,515 9,272 15,030 346,827
+
+Job Title C-Mine Operation Drilling Operator Blaster Blasting Assistant Backhoe Operator Loader Operator Dozer Operator Grader Operator Utility Loader Operator Haul-truck Driver Water Truck Driver Service Truck Driver Shift Labourer
+Sub-total C
+Camp Allocation Cost Expatriate Non Expatriate Local
+Sub-Total Camp Cost TOTAL EMPLOYMENT COST
+
+Salary ($/y) Year -1
+
+Year 1
+
+Year 2
+
+Year 3
+
+Year 4
+
+Year 5
+
+11,110 10,364 9,260 11,110 11,110 11,110 11,110 11,110 9,260 9,260 9,260 3,340
+
+11,110 5,182 4,630 16,665 16,665 33,330 16,665 16,665 41,670 13,890 13,890 10,020 200,382
+
+22,220 10,364 18,520 44,440 22,220 44,440 22,220 22,220 148,160 37,040 18,520 16,700 427,064
+
+44,440 10,364 18,520 44,440 22,220 44,440 22,220 22,220 185,200 37,040 18,520 16,700 486,324
+
+44,440 10,364 18,520 44,440 22,220 44,440 22,220 22,220 185,200 37,040 18,520 16,700 486,324
+
+44,440 10,364 18,520 44,440 22,220 44,440 22,220 22,220 166,680 37,040 18,520 16,700 467,804
+
+44,440 10,364 18,520 44,440 22,220 44,440 22,220 22,220 185,200 37,040 18,520 13,360 482,984
+
+Year 6
+44,440 10,364 18,520 44,440 22,220 44,440 22,220 22,220 92,600 37,040 18,520 13,360 390,384
+
+Table Continued
+
+Year 7
+
+Year 8
+
+22,220 10,364 18,520 44,440 22,220 44,440 22,220 22,220 74,080 37,040 18,520 13,360 349,644
+
+16,665 7,773 13,890 33,330 16,665 33,330 16,665 16,665 55,560 27,780 13,890 10,020 262,233
+
+5,850 3,150 525
+
+4,388 125,213
+5,906
+135,506 687,725
+
+23,400 289,800
+8,400
+321,600 1,852,191
+
+23,400 308,700
+8,400
+340,500 1,930,351
+
+23,400 308,700
+8,400
+340,500 1,930,351
+
+23,400 274,050
+8,400
+305,850 1,740,604
+
+23,400 280,350
+6,825
+310,575 1,753,829
+
+23,400 248,850
+6,825
+279,075 1,629,729
+
+23,400 236,250
+6,825
+266,475 1,576,389
+
+17,550 177,188
+5,119
+199,856 1,182,292
+
+Cost Item Drilling Ore Waste Blasting Ore Waste Loading Hauling
+Ancillary Equipment Personnel
+Ore Grade Control Dewatering Total
+Drilling Blasting Loading Hauling Ancillary Equipment Personnel Ore Grade Control Dewatering
+Total
+Drilling Ore
+Waste Blasting
+Ore Waste Loading Hauling Ancillary Equipment Personnel Ore Grade Control Dewatering Total
+Drilling Ore
+Waste Blasting
+Ore Waste Loading Hauling Ancillary Equipment Personnel Ore Grade Control Dewatering Total
+
+Total Mine Operating cost Estimation (US$'000)
+Pre-Strip Year 1 Year 2 Year 3 Year 4 Year 5 Year 6 1 111 208 250 135 352 227 0 25 20 52 31 65 83 1 86 188 198 104 288 144 54 150 230 345 233 519 382 0 29 19 63 47 83 124 54 121 211 282 186 437 258
+128 849 849 849 883 814 392 335 1,849 2,162 2,258 2,159 2,396 1,241 614 1,040 1,040 1,041 934 728 865 688 1,852 1,930 1,930 1,741 1,443 1,351
+2 69 71 71 74 74 74 12 84 100 101 70 103 62 1,833 6,004 6,589 6,846 6,229 6,431 4,593
+Saprolite
+
+125 330 604 676
+2 11 1,748
+-
+1 0 1 54 0 54 2 6 10 12 0 0 85
+
+674 1,468 825 1,470
+49 55 4,542
+1 3 1 2 4 8 4 8 1 28
+111 25 86 147 40 107 171 373 210 374 20 28 1,434
+
+487 435 363
+
+1,241 1,156 887
+
+597 533 384
+
+1,108 988
+
+715
+
+50 27 28
+
+43 36 25
+
+3,526 3,175 2,402
+
+Sap-rock
+
+17 8 66
+
+2 2 11
+
+15 7 55
+
+52 36 178
+
+8 7 32
+
+44 29 146
+
+82 44 398
+
+208 116 973
+
+100 54 421
+
+186 99 784
+
+6 4 29
+
+7 4 28
+
+658 365 2,877
+
+Fresh Rock
+
+191 242
+
+69
+
+18 51 21
+
+173 191
+
+49
+
+178 309
+
+55
+
+20 79 20
+
+158 230
+
+35
+
+280 371 122
+
+713 986 299
+
+343 454 130
+
+637 843 241
+
+14 41 16
+
+50 61 17
+
+2,405 3,306 950
+
+76 222 68 134
+0 6 505
+51 12 39 185 47 138 264 775 236 467 31 21 2,030
+302 53 249 334 71 263 475 1,399 425 842 43 76 3,896
+
+74 235 164 256
+6 7 742
+1 1 0 4 3 1 3 10 7 11 1 0 38
+226 82 144 378 172 207 315 996 694 1,084 66 55 3,813
+
+Year 7 94 44 49 204 88 116 337 995 865
+1,310 74 41
+3,920
+205 606 527 798 37 18 2,192
+1 0 1 9 4 5 6 17 15 22 1 1 71
+92 44 48 195 119 77 126 372 324 490 35 22 1,657
+
+Year 8 77 30 47 156 55 101 312 955 607 982 45 36
+3,170
+155 475 302 489 11 14 1,445
+18 5 13 79 27 52 80 245 156 252 15 7 851
+59 25 34 76 40 36 77 235 150 242 20 14 873
+
+Total 1,456 351 1,105 2,274 478 1,796 5,412 14,351 7,735 13,227 553 608 45,616
+2,620 6,947 3,744 6,403 210 216 20,141
+163 33 130 547 129 418 826 2,191 1,181 2,019 88 68 7,084
+1,293 318 975 1,727 560 1,166 1,966 5,213 2,809 4,805 254 324 18,391
+
+SRK Consulting Addendum to the Open Pit Mining Study on Taparko and Bouroum Deposits
+Appendix 4
+Quotes for Drilling and Blasting Cost Estimation
+
+Page 13
+
+March 2004RC SRK Open Pit Mining Study on Taparko and Bouroum Mar 2004_Addendum.doc, Apr. 2, 04, 1:02 PM
+
+
