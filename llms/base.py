@@ -1,7 +1,7 @@
 from enum import Enum
 from abc import abstractmethod
-
-from pydantic import BaseModel
+from typing import List, Optional
+from dataclasses import dataclass
 
 
 class MessageRole(Enum):
@@ -10,6 +10,7 @@ class MessageRole(Enum):
     ASSISTANT = "assistant"
 
 
+@dataclass
 class Message:
     role: MessageRole
     content: str
@@ -19,20 +20,25 @@ class Message:
         return f"{self.role.value}: {self.content}"
 
 
+@dataclass
 class Response:
     message: Message
     additional_kwargs: dict
 
 
-class LLMMetadata(BaseModel):
-    model_name: str
+@dataclass
+class LLMMetadata:
     context_window: int
-    max_output: int
+    model_name: Optional[str] = None
 
 
 class BaseLLM:
     metadata: LLMMetadata
 
     @abstractmethod
-    def chat(self, messages: list[Message]) -> Response:
+    def chat(self, messages: list[Message], max_tokens: int) -> Response:
         """Chat endpoint for LLM."""
+
+    @abstractmethod
+    async def async_chat(self, messages: list[Message], max_tokens: int) -> Response:
+        """Asynchronous chat endpoint for LLM."""

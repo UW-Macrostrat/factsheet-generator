@@ -8,7 +8,7 @@ service WorkerServer {
 }
 
 message FileDataRequest {
-    string document_name = 1;
+    string document_text = 1;
 } 
 
 message StratNameRequest {
@@ -17,6 +17,7 @@ message StratNameRequest {
 
 message QueryRequest {
     repeated string queries = 1;
+    repeated string categories = 2;
 }
 
 message FactRequest {

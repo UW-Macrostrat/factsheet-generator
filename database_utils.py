@@ -20,8 +20,6 @@ async def insert_chunk(
         ),
     )
 
-    await conn.commit()
-
 
 async def retrieve_chunks(
     conn: psycopg.AsyncConnection,
@@ -43,11 +41,11 @@ async def retrieve_chunks(
         #     LIMIT %(top_k)s;
         # """,
 
-        data = await conn.execute(
+        cur = await conn.execute(
             """
                 SELECT chunk_text, embedding <=> %(query_embedding)s as distance
                 FROM chunk_data
-                WHERE strat_name LIKE %(like_pattern)s
+                WHERE chunk_text ILIKE %(like_pattern)s
                 ORDER BY distance
                 LIMIT %(top_k)s;
             """,
@@ -56,10 +54,11 @@ async def retrieve_chunks(
                 "top_k": top_k,
                 "like_pattern": f"%{strat_name}%",
             },
-        ).fetchall()
+        )
+        data = await cur.fetchall()
 
     else:
-        data = await conn.execute(
+        cur = await conn.execute(
             """
                 SELECT chunk_text, embedding <=> %(query_embedding)s as distance
                 FROM chunk_data
@@ -67,9 +66,8 @@ async def retrieve_chunks(
                 LIMIT %(top_k)s;
             """,
             {"query_embedding": query_embedding, "top_k": top_k},
-        ).fetchall()
-
-    await conn.commit()
+        )
+        data = cur.fetchall()
 
     return data
 
@@ -89,15 +87,11 @@ async def store_facts(
     #     (strat_name,),
     # ).fetchone()[0]
 
-    await conn.commit()
-
     query = """
                 INSERT INTO factsheets (strat_name, {columns})
                 VALUES ({parameters});
             """
     columns = ",".join(categories)
-    parameters = ",".join(["%s" * (len(facts) + 1)])
+    parameters = ",".join(["%s"] * (len(facts) + 1))
     values = [strat_name] + facts
     await conn.execute(query.format(columns=columns, parameters=parameters), values)
-
-    await conn.commit()

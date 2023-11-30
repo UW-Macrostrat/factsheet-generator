@@ -6,15 +6,17 @@ from embeddings.base import BaseEmbedding
 import numpy as np
 from numpy.typing import NDArray
 
-
 class HuggingFaceEmbedding(BaseEmbedding):
-    def __init__(self, model_name: str, device: str, instruction: str = "") -> None:
+    def __init__(
+        self, model_name: str, device: str, context_length: int, instruction: str = ""
+    ) -> None:
         super().__init__()
         self.model_name = model_name
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModel.from_pretrained(model_name)
-        self.embed_dim = self.model.config.hidden_size
+        # self.model = AutoModel.from_pretrained(model_name, device_map=device)
+        # self.embed_dim = self.model.config.hidden_size
         self.instruction = instruction
+        self.context_length = context_length
 
     def get_text_embedding(
         self,
