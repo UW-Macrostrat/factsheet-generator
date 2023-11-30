@@ -14,16 +14,19 @@ class MessageRole(Enum):
 class Message:
     role: MessageRole
     content: str
-    additional_kwargs: dict
+    additional_kwargs: Optional[dict] = None
 
     def __str__(self) -> str:
         return f"{self.role.value}: {self.content}"
+
+    def to_json(self) -> dict:
+        return {"role": self.role.value, "content": self.content}
 
 
 @dataclass
 class Response:
     message: Message
-    additional_kwargs: dict
+    additional_kwargs: Optional[dict] = None
 
 
 @dataclass

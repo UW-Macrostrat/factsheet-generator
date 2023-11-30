@@ -1,5 +1,5 @@
 from openai import OpenAI
-from base import BaseLLM, LLMMetadata, Message, Response
+from llms.base import BaseLLM, LLMMetadata, Message, Response
 
 
 class OpenAILLM(BaseLLM):

@@ -1,6 +1,6 @@
 import json
 import aiohttp
-from base import BaseLLM, LLMMetadata, Message, Response
+from llms.base import BaseLLM, LLMMetadata, Message, Response, MessageRole
 
 
 class LlamaCPPLLM(BaseLLM):
@@ -20,6 +20,9 @@ class LlamaCPPLLM(BaseLLM):
         self.session = aiohttp.ClientSession()
 
     async def async_chat(self, messages: list[Message], max_tokens: int) -> Response:
+        
+        messages = [m.to_json() for m in messages]
+        
         async with self.session.post(
             f"http://{self.server_address}/v1/chat/completions",
             data=json.dumps(
@@ -29,5 +32,5 @@ class LlamaCPPLLM(BaseLLM):
                 }
             ),
         ) as resp:
-            output = resp.json()
-            return Response(message=output["choices"][0]["message"]["content"])
+            output = await resp.json()
+            return Response(message=Message(role=MessageRole.ASSISTANT, content=output["choices"][0]["message"]["content"]))

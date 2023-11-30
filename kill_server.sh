@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker kill node
-docker rm node
+docker kill worker
+docker rm worker

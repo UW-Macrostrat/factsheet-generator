@@ -16,7 +16,8 @@ import workerserver_pb2_grpc
 DATA_DIR = "data/dev/"
 STRAT_NAME_DIR = "data/strat_names.csv"
 QUERY_DIR = "data/query.csv"
-EMBED_DIM = 3  # TODO change
+EMBED_DIM = 384  # TODO change
+CONNINFO = "dbname=vector_db host=cosmos0003 user=admin password=admin port=5432"
 
 
 async def read_file(queue: asyncio.Queue, consumer_count: int) -> None:
@@ -34,9 +35,7 @@ async def read_file(queue: asyncio.Queue, consumer_count: int) -> None:
     logging.info("All files have been read.")
 
 
-async def store_file(
-    host: str, queue: asyncio.Queue, strat_names: list[str] = ["test"]
-) -> None:
+async def store_file(host: str, queue: asyncio.Queue) -> None:
     async with grpc.aio.insecure_channel(f"{host}:50051") as channel:
         stub = workerserver_pb2_grpc.WorkerServerStub(channel)
 
@@ -59,16 +58,16 @@ async def store_file(
 
 
 async def generate_facts(host_list: list[str]) -> None:
-    conninfo = "dbname=vector_db host=postgres user=admin password=admin port=5432"
-
     categories = []
     queries = []
-    with psycopg.connect(conninfo=conninfo, autocommit=True) as conn:
+    async with await psycopg.AsyncConnection.connect(
+        conninfo=CONNINFO, autocommit=True
+    ) as conn:
         with open(QUERY_DIR, mode="r") as query_file:
             query_reader = csv.reader(query_file)
 
             for row in query_reader:
-                conn.execute(
+                await conn.execute(
                     """
                         ALTER TABLE factsheets
                         ADD COLUMN {category} text;    
@@ -78,6 +77,8 @@ async def generate_facts(host_list: list[str]) -> None:
                 )
                 categories.append(row[0])
                 queries.append(row[1])
+
+    print("factsheets table updated")
 
     queue = asyncio.Queue()
     with open(STRAT_NAME_DIR, mode="r") as name_file:
@@ -121,10 +122,11 @@ async def fact_worker_task(
     logging.info("Worker %s has finished generating facts.", host)
 
 
-def init_db():
-    conninfo = "dbname=vector_db host=postgres user=admin password=admin port=5432"
-    with psycopg.connect(conninfo=conninfo, autocommit=True) as conn:
-        conn.execute(
+async def init_db():
+    async with await psycopg.AsyncConnection.connect(
+        conninfo=CONNINFO, autocommit=True
+    ) as conn:
+        await conn.execute(
             """
                 CREATE TABLE IF NOT EXISTS chunk_data (
                     chunk_id INT GENERATED ALWAYS AS IDENTITY,
@@ -137,7 +139,7 @@ def init_db():
             )
         )
 
-        conn.execute(
+        await conn.execute(
             """
                 CREATE TABLE IF NOT EXISTS factsheets (
                     strat_name varchar(100),
@@ -148,8 +150,7 @@ def init_db():
 
 
 async def main(worker_list: list[str]) -> None:
-    time.sleep(10)  # wait for db initialize
-    init_db()
+    await init_db()
 
     start = time.time()
 

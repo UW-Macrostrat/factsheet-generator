@@ -24,7 +24,7 @@ from embeddings.huggingface import HuggingFaceEmbedding
 from llms.llamacpp import LlamaCPPLLM
 from llms.base import Message, MessageRole
 
-conninfo = "dbname=vector_db host=postgres user=admin password=admin port=5432"
+CONNINFO = "dbname=vector_db host=cosmos0003 user=admin password=admin port=5432"
 
 
 class Worker(workerserver_pb2_grpc.WorkerServerServicer):
@@ -36,6 +36,8 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
         else:
             active_device = torch.device("cpu")
 
+        logging.info("Using %s device.", active_device)
+
         self.embedding = HuggingFaceEmbedding(
             model_name="BAAI/bge-small-en",
             device=active_device,
@@ -43,7 +45,7 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
             instruction="Represent this sentence for searching relevant passages: ",
         )
 
-        self.llm = LlamaCPPLLM("llm_server:8080", 4000)
+        self.llm = LlamaCPPLLM("localhost:8080", 4000)
 
     async def set_connection(self, conn: psycopg.AsyncConnection) -> None:
         await register_vector_async(conn)
@@ -52,8 +54,6 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
     async def generate_embedding(
         self, text: str, is_query: bool
     ) -> NDArray[np.float32]:
-        # await asyncio.sleep(0.1)
-        # return np.array([0, 0, 0], dtype=np.float32)
         return self.embedding.get_text_embedding(text, is_query)
 
     async def generate_response(self, query: str, context: list[str]) -> str:
@@ -62,24 +62,37 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
         """
 
         prompt = """
-        Context information is below.
-        ---------------------
-        {context_str}
-        ---------------------
-        Given the context information and not prior knowledge, answer the query. Be concise and keep your answer under 100 words.
-        Query: {query_str}
-        Answer: 
+Context information is below.
+\"\"\"
+{context_str}
+\"\"\"
+
+Given the context information and not prior knowledge, answer the question. Be concise and short. Keep your answer under 50 words.
+Respond with "I don't know" if you cannot find an answer in the given context or if the context is empty. 
+DO NOT answer with information that is not present in the context.
+
+Question: 
+\"\"\"
+{query_str}
+\"\"\"
         """
 
         messages = [
             Message(MessageRole.SYSTEM, system_prompt),
             Message(
                 MessageRole.USER,
-                prompt.format(query_str=query, context_str="\n".join(context)),
+                prompt.format(query_str=query, context_str="\n\n".join(context)),
             ),
         ]
+        
+        print(messages[1].content)
 
-        return await self.llm.async_chat(messages, max_tokens=200)
+        response = await self.llm.async_chat(messages, max_tokens=200)
+        
+        print(response)
+        
+        return response.message.content
+        
 
     async def StoreFile(
         self,
@@ -120,6 +133,9 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
             tasks = [compute_chunks(c) for c in chunks]
             await asyncio.gather(*tasks)
 
+            # cur = await self.conn.execute("SELECT * FROM chunk_data LIMIT 10;")
+            # print(await cur.fetchall())
+
             return workerserver_pb2.ErrorResponse()
 
         except:
@@ -137,7 +153,7 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
 
         self.queries = request.queries
         self.categories = request.categories
-
+        print("queries set")
         return workerserver_pb2.ErrorResponse()
 
     async def GenerateFacts(
@@ -162,7 +178,7 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
                     top_k=20,
                 )
 
-                logging.info("Chunks %s, query %s", chunks, query)
+                # logging.info("Chunks %s, query %s", chunks, query)
 
                 facts.append(
                     await self.generate_response(query, [c[0] for c in chunks])
@@ -170,6 +186,9 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
 
             await store_facts(self.conn, request.strat_name, self.categories, facts)
 
+            cur = await self.conn.execute("SELECT * FROM factsheets LIMIT 10;")
+            print(await cur.fetchall())
+            
             return workerserver_pb2.ErrorResponse()
 
         except:
@@ -180,7 +199,7 @@ async def serve() -> None:
     server = grpc.aio.server()
 
     async with await psycopg.AsyncConnection.connect(
-        conninfo=conninfo, autocommit=True
+        conninfo=CONNINFO, autocommit=True
     ) as conn:
         worker = Worker()
         await worker.set_connection(conn)
