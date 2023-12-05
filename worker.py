@@ -23,17 +23,22 @@ from embeddings.huggingface import HuggingFaceEmbedding
 from llms.llamacpp import LlamaCPPLLM
 from llms.base import Message, MessageRole
 
+EMBED_BATCH_SIZE = 16
 DB_HOST = os.environ["DB_HOST"]
 GPU_ID = os.environ["GPU_ID"]
 HOST_NAME = os.environ["HOST_NAME"]
 CONNINFO = f"dbname=vector_db host={DB_HOST} user=admin password=admin port=5432"
+# SYSTEM_PROMPT = """
+# You are an AI assistant that helps people find information.
+# """
 SYSTEM_PROMPT = """
-You are an friendly geologist who will be reading and searching for information about specific stratigraphic units.
+You are a helpful and knowledgeable geologist, dedicated to reading and meticulously searching for details about specific geological stratigraphic units.
+If the context provided to you does not provide the answer to the question, you will say, "I don't know".
+You will not invent anything that is not drawn directly from the context.
+You will be as specific as possible in its answers.
 """
 QUERY_PROMPT = """
-Given the context information and not prior knowledge, answer the question. 
-Be concise and keep your answer under 50 words. The response should use the exact wording from the context without paraphrasing when possible.
-You MUST answer only using information found in the context and respond with "I don't know" if you cannot find an answer in the given context. 
+Based on the provided context and without using prior knowledge, please answer the question succinctly. Ensure that every detail in your answer is explicitly mentioned in the given context. 
 
 Context:
 \"\"\"
@@ -95,14 +100,13 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
     ) -> workerserver_pb2.ErrorResponse:
         try:
             text = request.document_text
-            text = preprocessing.remove_newlines(text) # rename
             split_text = preprocessing.split_by_paragraph(text)
+            split_text = [preprocessing.remove_newlines(t) for t in split_text]
             split_text = preprocessing.remove_short_sentences(split_text)
             split_text = [preprocessing.split_by_sentence(p) for p in split_text]
 
             chunks = []
             chunk_size = self.embedding.context_length
-            token_time = 0
             for paragraph in split_text:
                 token_count = self.embedding.tokenizer(paragraph, return_length=True).length
                 
@@ -123,18 +127,24 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
                 if len(current_chunk) > 0:
                     chunks.append(". ".join(current_chunk) + ".")
 
-            async def compute_chunks(chunk_text: str) -> None:
-                embedding = await self.generate_embedding(chunk_text, False)
-                await insert_chunk(self.conn, chunk_text, embedding)
+            # async def compute_chunks(chunk_text: str) -> None:
+            #     embedding = await self.generate_embedding(chunk_text, False)
+            #     await insert_chunk(self.conn, chunk_text, embedding)
 
-            tasks = [compute_chunks(c) for c in chunks]
-            await asyncio.gather(*tasks)
+            # tasks = [compute_chunks(c) for c in chunks]
+            # await asyncio.gather(*tasks)
             
-            # for i in range(0, len(chunks), 3):
-            #     embeddings = await self.generate_batch_embedding(chunks[i, i + 3], False)
-            #     tasks = [insert_chunk(self.conn, chunk_text, embedding) for chunk_text, embedding in zip(chunks[i, i + 3], embeddings)]
-            #     await asyncio.gather(*tasks)
-
+            db_time = 0
+            for i in range(0, len(chunks), EMBED_BATCH_SIZE):
+                embeddings = await self.generate_batch_embedding(chunks[i: i + EMBED_BATCH_SIZE], False)
+                start = time.time()
+                # TODO db insert is very slow
+                tasks = [insert_chunk(self.conn, chunk_text, embedding) for chunk_text, embedding in zip(chunks[i: i + EMBED_BATCH_SIZE], embeddings)]
+                await asyncio.gather(*tasks)
+                end = time.time()
+                db_time += end - start
+                
+            logging.info("db insert time: %s", db_time)
             return workerserver_pb2.ErrorResponse()
 
         except:

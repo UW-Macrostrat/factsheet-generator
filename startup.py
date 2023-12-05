@@ -24,7 +24,7 @@ if service_ids:
 HOSTNAMES = ["cosmos0001", "cosmos0002", "cosmos0003"]
 MANAGER_NODE = "cosmos0003"
 WORKER_REPLICAS = 4
-DATA_DIR = "/data/small_sample"
+DATA_DIR = "/data/sample"
 
 
 # service_list = []

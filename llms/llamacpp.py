@@ -29,6 +29,7 @@ class LlamaCPPLLM(BaseLLM):
                 {
                     "messages": messages,
                     "max_tokens": max_tokens,
+                    "temperature": 0,
                 }
             ),
         ) as resp:
