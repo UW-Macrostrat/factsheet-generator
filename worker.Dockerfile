@@ -1,3 +1,3 @@
-FROM node
+FROM bxia68/macrostrat:node
 
 CMD python3.10 worker.py

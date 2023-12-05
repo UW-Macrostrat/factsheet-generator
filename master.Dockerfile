@@ -1,3 +1,3 @@
-FROM node
+FROM bxia68/macrostrat:node
 
-CMD python3.10 master.py localhost
+CMD python3.10

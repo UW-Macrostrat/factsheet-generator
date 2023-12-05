@@ -33,11 +33,15 @@ RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 COPY requirements.txt ./
 RUN python3.10 -m pip install --no-cache-dir -r requirements.txt
 
-# Copy app files
-COPY *.py ./
-COPY *.proto ./
-COPY embeddings ./embeddings
-COPY llms ./llms
+RUN apt-get install -y --no-install-recommends \
+    iputils-ping \
+    vim
 
 # Generate gRPC stub files
+COPY *.proto ./
 RUN python3.10 -m grpc_tools.protoc -I=. --python_out=. --grpc_python_out=. workerserver.proto
+
+# Copy app files
+COPY embeddings ./embeddings
+COPY llms ./llms
+COPY *.py ./

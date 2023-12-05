@@ -5,6 +5,7 @@ service WorkerServer {
     rpc SetStratNames(StratNameRequest) returns (ErrorResponse) {}
     rpc SetQueries(QueryRequest) returns (ErrorResponse) {}
     rpc GenerateFacts(FactRequest) returns (ErrorResponse) {}
+    rpc Heartbeat(StatusRequest) returns (StatusResponse) {}
 }
 
 message FileDataRequest {
@@ -26,4 +27,10 @@ message FactRequest {
 
 message ErrorResponse {
     string error = 1;
+}
+
+message StatusRequest {}
+
+message StatusResponse {
+    bool status = 1;
 }

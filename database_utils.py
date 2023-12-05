@@ -25,8 +25,8 @@ async def retrieve_chunks(
     conn: psycopg.AsyncConnection,
     query_embedding: NDArray[np.float32],
     strat_name: str = "",
-    must_include: bool = True,
-    top_k: int = 10,
+    must_include: bool = False,
+    top_k: int = 5,
 ) -> list[tuple]:
     data = []
 
@@ -67,8 +67,8 @@ async def retrieve_chunks(
             """,
             {"query_embedding": query_embedding, "top_k": top_k},
         )
-        data = cur.fetchall()
-
+        data = await cur.fetchall()
+        
     return data
 
 
@@ -77,6 +77,7 @@ async def store_facts(
     strat_name: str,
     categories: list[str],
     facts: list[str],
+    context_list: list[str],
 ) -> None:
     # strat_name_id = await conn.execute(
     #     """
@@ -92,6 +93,6 @@ async def store_facts(
                 VALUES ({parameters});
             """
     columns = ",".join(categories)
-    parameters = ",".join(["%s"] * (len(facts) + 1))
-    values = [strat_name] + facts
+    values = [strat_name] + facts + context_list
+    parameters = ",".join(["%s"] * len(values))
     await conn.execute(query.format(columns=columns, parameters=parameters), values)

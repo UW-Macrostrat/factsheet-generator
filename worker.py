@@ -1,6 +1,5 @@
 import asyncio
 import logging
-import sys
 import traceback
 
 import grpc
@@ -8,12 +7,12 @@ import workerserver_pb2
 import workerserver_pb2_grpc
 
 import psycopg
-from psycopg_pool import AsyncConnectionPool
 from pgvector.psycopg import register_vector_async
 
+import os
+import time
+
 import torch
-import aiohttp
-import random
 import numpy as np
 from numpy.typing import NDArray
 
@@ -24,28 +23,42 @@ from embeddings.huggingface import HuggingFaceEmbedding
 from llms.llamacpp import LlamaCPPLLM
 from llms.base import Message, MessageRole
 
-CONNINFO = "dbname=vector_db host=cosmos0003 user=admin password=admin port=5432"
+DB_HOST = os.environ["DB_HOST"]
+GPU_ID = os.environ["GPU_ID"]
+HOST_NAME = os.environ["HOST_NAME"]
+CONNINFO = f"dbname=vector_db host={DB_HOST} user=admin password=admin port=5432"
+SYSTEM_PROMPT = """
+You are an friendly geologist who will be reading and searching for information about specific stratigraphic units.
+"""
+QUERY_PROMPT = """
+Given the context information and not prior knowledge, answer the question. 
+Be concise and keep your answer under 50 words. The response should use the exact wording from the context without paraphrasing when possible.
+You MUST answer only using information found in the context and respond with "I don't know" if you cannot find an answer in the given context. 
 
+Context:
+\"\"\"
+{context_str}
+\"\"\"
+
+Question: 
+\"\"\"
+{query_str}
+\"\"\"
+"""
 
 class Worker(workerserver_pb2_grpc.WorkerServerServicer):
     def __init__(self):
-        if torch.backends.mps.is_available():
-            active_device = torch.device("mps")
-        elif torch.cuda.is_available():
-            active_device = torch.device("cuda", 0)
-        else:
-            active_device = torch.device("cpu")
-
+        active_device = torch.device("cuda", int(GPU_ID))
         logging.info("Using %s device.", active_device)
 
         self.embedding = HuggingFaceEmbedding(
-            model_name="BAAI/bge-small-en",
+            model_name="BAAI/bge-base-en",
             device=active_device,
             context_length=512,
             instruction="Represent this sentence for searching relevant passages: ",
         )
 
-        self.llm = LlamaCPPLLM("localhost:8080", 4000)
+        self.llm = LlamaCPPLLM(f"llm_backend_{HOST_NAME}_{GPU_ID}:8080", 4000)
 
     async def set_connection(self, conn: psycopg.AsyncConnection) -> None:
         await register_vector_async(conn)
@@ -55,41 +68,22 @@ class Worker(workerserver_pb2_grpc.WorkerServerServicer):
         self, text: str, is_query: bool
     ) -> NDArray[np.float32]:
         return self.embedding.get_text_embedding(text, is_query)
+    
+    async def generate_batch_embedding(
+        self, texts: list[str], is_query: bool
+    ) -> NDArray[np.float32]:
+        return self.embedding.get_batch_embedding(texts, is_query)
 
     async def generate_response(self, query: str, context: list[str]) -> str:
-        system_prompt = """
-        You are an AI assistant that helps people find information.
-        """
-
-        prompt = """
-Context information is below.
-\"\"\"
-{context_str}
-\"\"\"
-
-Given the context information and not prior knowledge, answer the question. Be concise and short. Keep your answer under 50 words.
-Respond with "I don't know" if you cannot find an answer in the given context or if the context is empty. 
-DO NOT answer with information that is not present in the context.
-
-Question: 
-\"\"\"
-{query_str}
-\"\"\"
-        """
-
         messages = [
-            Message(MessageRole.SYSTEM, system_prompt),
+            Message(MessageRole.SYSTEM, SYSTEM_PROMPT),
             Message(
                 MessageRole.USER,
-                prompt.format(query_str=query, context_str="\n\n".join(context)),
+                QUERY_PROMPT.format(query_str=query, context_str="\n\n".join(context)),
             ),
         ]
-        
-        print(messages[1].content)
 
         response = await self.llm.async_chat(messages, max_tokens=200)
-        
-        print(response)
         
         return response.message.content
         
@@ -101,30 +95,33 @@ Question:
     ) -> workerserver_pb2.ErrorResponse:
         try:
             text = request.document_text
-            text = preprocessing.remove_newlines(text)
-            split_text = preprocessing.split_by_sentence(text)
+            text = preprocessing.remove_newlines(text) # rename
+            split_text = preprocessing.split_by_paragraph(text)
             split_text = preprocessing.remove_short_sentences(split_text)
+            split_text = [preprocessing.split_by_sentence(p) for p in split_text]
 
-            token_count = [len(self.embedding.tokenizer.encode(s)) for s in split_text]
-
-            chunk_size = self.embedding.context_length
             chunks = []
-            current_chunk = []
-            current_tokens = 0
-            for sentence, token in zip(split_text, token_count):
-                if current_tokens + token >= chunk_size:
+            chunk_size = self.embedding.context_length
+            token_time = 0
+            for paragraph in split_text:
+                token_count = self.embedding.tokenizer(paragraph, return_length=True).length
+                
+                current_chunk = []
+                current_tokens = 0
+                for sentence, token in zip(paragraph, token_count):
+                    if current_tokens + token >= chunk_size:
+                        chunks.append(". ".join(current_chunk) + ".")
+                        current_chunk = []
+                        current_tokens = 0
+
+                    if token > chunk_size:
+                        continue
+
+                    current_chunk.append(sentence)
+                    current_tokens += token + 1
+
+                if len(current_chunk) > 0:
                     chunks.append(". ".join(current_chunk) + ".")
-                    current_chunk = []
-                    current_tokens = 0
-
-                if token > chunk_size:
-                    continue
-
-                current_chunk.append(sentence)
-                current_tokens += token + 1
-
-            if len(current_chunk) > 0:
-                chunks.append(". ".join(chunks) + ".")
 
             async def compute_chunks(chunk_text: str) -> None:
                 embedding = await self.generate_embedding(chunk_text, False)
@@ -132,9 +129,11 @@ Question:
 
             tasks = [compute_chunks(c) for c in chunks]
             await asyncio.gather(*tasks)
-
-            # cur = await self.conn.execute("SELECT * FROM chunk_data LIMIT 10;")
-            # print(await cur.fetchall())
+            
+            # for i in range(0, len(chunks), 3):
+            #     embeddings = await self.generate_batch_embedding(chunks[i, i + 3], False)
+            #     tasks = [insert_chunk(self.conn, chunk_text, embedding) for chunk_text, embedding in zip(chunks[i, i + 3], embeddings)]
+            #     await asyncio.gather(*tasks)
 
             return workerserver_pb2.ErrorResponse()
 
@@ -152,8 +151,8 @@ Question:
             )
 
         self.queries = request.queries
-        self.categories = request.categories
-        print("queries set")
+        self.categories = list(request.categories) + [f"{c}_context" for c in request.categories]
+        logging.info("Queries set, catgories: %s", self.categories)
         return workerserver_pb2.ErrorResponse()
 
     async def GenerateFacts(
@@ -166,6 +165,7 @@ Question:
 
         try:
             facts = []
+            context_list = []
             for query in self.queries:
                 query = query.format(strat_name=request.strat_name)
                 query_embedding = await self.generate_embedding(query, True)
@@ -175,27 +175,32 @@ Question:
                     query_embedding,
                     strat_name=request.strat_name,
                     must_include=True,
-                    top_k=20,
+                    top_k=8,
                 )
 
-                # logging.info("Chunks %s, query %s", chunks, query)
-
+                context = [c[0] for c in chunks]
                 facts.append(
-                    await self.generate_response(query, [c[0] for c in chunks])
+                    await self.generate_response(query, context)
                 )
+                context_list.append(context)
 
-            await store_facts(self.conn, request.strat_name, self.categories, facts)
-
-            cur = await self.conn.execute("SELECT * FROM factsheets LIMIT 10;")
-            print(await cur.fetchall())
+            context_list = ["\n\n###\n\n".join(c) for c in context_list]
+            await store_facts(self.conn, request.strat_name, self.categories, facts, context_list)
             
             return workerserver_pb2.ErrorResponse()
 
         except:
             return workerserver_pb2.ErrorResponse(error=traceback.format_exc())
+        
+    async def Heartbeat(        
+        self,
+        request: workerserver_pb2.StatusRequest,
+        context: grpc.aio.ServicerContext,
+    ):
+        return workerserver_pb2.StatusResponse(status=True)
 
 
-async def serve() -> None:
+async def serve() -> None:    
     server = grpc.aio.server()
 
     async with await psycopg.AsyncConnection.connect(

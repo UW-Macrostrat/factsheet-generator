@@ -1,11 +1,12 @@
 import os
 import csv
 import time
+import json
 import logging
 
 import asyncio
 import aiofiles
-import argparse
+from dataclasses import dataclass
 
 import psycopg
 
@@ -13,35 +14,46 @@ import grpc
 import workerserver_pb2
 import workerserver_pb2_grpc
 
-DATA_DIR = "data/dev/"
-STRAT_NAME_DIR = "data/strat_names.csv"
-QUERY_DIR = "data/query.csv"
-EMBED_DIM = 384  # TODO change
-CONNINFO = "dbname=vector_db host=cosmos0003 user=admin password=admin port=5432"
+DATA_DIR = os.environ["DATA_DIR"]
+DB_HOST = os.environ["DB_HOST"]
+STRAT_NAME_DIR = "/data/strat_names.csv"
+QUERY_DIR = "/data/query.csv"
+EMBED_DIM = 768 
+CONNINFO = f"dbname=vector_db host={DB_HOST} user=admin password=admin port=5432"
 
+@dataclass
+class Progress():
+    output: str = "MASTER: Finished %s."
+    current: int = 0
+    
+    def increment(self):
+        self.current += 1
+        if self.current % 10 == 0:
+            logging.info(self.output, self.current)
 
 async def read_file(queue: asyncio.Queue, consumer_count: int) -> None:
     for filename in os.listdir(DATA_DIR):
         file_path = os.path.join(DATA_DIR, filename)
-
+        
         async with aiofiles.open(file_path, mode="r") as file:
             content = await file.read()
 
             await queue.put(content)
+            
+        await asyncio.sleep(0) # force context switch
 
     for _ in range(consumer_count):
         await queue.put(None)
 
-    logging.info("All files have been read.")
+    logging.info("MASTER: All files have been read.")
 
 
-async def store_file(host: str, queue: asyncio.Queue) -> None:
+async def store_file(host: str, queue: asyncio.Queue, progress: Progress) -> None:
     async with grpc.aio.insecure_channel(f"{host}:50051") as channel:
         stub = workerserver_pb2_grpc.WorkerServerStub(channel)
-
+        
         while True:
             item = await queue.get()
-
             if item == None:
                 break
 
@@ -53,8 +65,9 @@ async def store_file(host: str, queue: asyncio.Queue) -> None:
                 raise Exception(response.error)
 
             queue.task_done()
+            progress.increment()
 
-    logging.info("Worker %s has finished storing files.", host)
+    logging.info("MASTER: Worker %s has finished storing files.", host)
 
 
 async def generate_facts(host_list: list[str]) -> None:
@@ -70,7 +83,8 @@ async def generate_facts(host_list: list[str]) -> None:
                 await conn.execute(
                     """
                         ALTER TABLE factsheets
-                        ADD COLUMN {category} text;    
+                        ADD COLUMN {category} text,
+                        ADD COLUMN {category}_context text;    
                     """.format(
                         category=row[0]
                     )
@@ -78,7 +92,7 @@ async def generate_facts(host_list: list[str]) -> None:
                 categories.append(row[0])
                 queries.append(row[1])
 
-    print("factsheets table updated")
+    logging.info("Factsheets table updated")
 
     queue = asyncio.Queue()
     with open(STRAT_NAME_DIR, mode="r") as name_file:
@@ -91,7 +105,7 @@ async def generate_facts(host_list: list[str]) -> None:
 
     await asyncio.gather(*tasks)
 
-    logging.info("Factsheet has been generated.")
+    logging.info("MASTER: Factsheet has been generated.")
 
 
 async def fact_worker_task(
@@ -119,7 +133,7 @@ async def fact_worker_task(
 
             queue.task_done()
 
-    logging.info("Worker %s has finished generating facts.", host)
+    logging.info("MASTER: Worker %s has finished generating facts.", host)
 
 
 async def init_db():
@@ -148,35 +162,63 @@ async def init_db():
             """,
         )
 
+async def connect_worker(server_address: str, max_attempts: int = 5) -> None:
+    attempt = 1
+    while True:
+        try:
+            async with grpc.aio.insecure_channel(f"{server_address}:50051") as channel:
+                stub = workerserver_pb2_grpc.WorkerServerStub(channel)
+                resp = await stub.Heartbeat(workerserver_pb2.StatusRequest())
+                if resp.status:
+                    logging.info("MASTER: Connected to %s successfully.", server_address)
+                    return
+                else:
+                    logging.info("MASTER: Worker server at %s is not ready yet.", server_address)
+        except grpc.RpcError:
+            logging.info("MASTER: Attempt %s: Failed to connect to %s.", attempt, server_address)
+            await asyncio.sleep(2)
+
+        attempt += 1
+
+async def connect_db() -> None:
+    attempt = 1
+    while True:
+        try:
+            async with await psycopg.AsyncConnection.connect(conninfo=CONNINFO):
+                return
+        except psycopg.OperationalError:
+            logging.info("MASTER: Attempt %s: Failed to connect to vector database.")
+            await asyncio.sleep(2)
+            
+        attempt += 1
 
 async def main(worker_list: list[str]) -> None:
+    await asyncio.gather(*[connect_worker(worker) for worker in worker_list], connect_db())
+
     await init_db()
 
     start = time.time()
 
     queue = asyncio.Queue()
 
+    progress = Progress("MASTER: Generated embeddings for %s files.")
     read_task = read_file(queue, len(worker_list))
-    store_tasks = [store_file(port, queue) for port in worker_list]
+    store_tasks = [store_file(port, queue, progress) for port in worker_list]
 
     await asyncio.gather(read_task, *store_tasks)
 
     end = time.time()
-    logging.info("Finished storing files in %s seconds.", end - start)
+    logging.info("MASTER: Finished storing files in %s seconds.", end - start)
 
     start = time.time()
 
     await generate_facts(worker_list)
 
     end = time.time()
-    logging.info("Finished generated facts in %s seconds.", end - start)
+    logging.info("MASTER: Finished generated facts in %s seconds.", end - start)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("worker_list", nargs="+")
-
-    args = parser.parse_args()
-
+    workers = json.loads(os.environ["WORKER_NAMES"])
     logging.basicConfig(level=logging.INFO)
-    asyncio.run(main(args.worker_list))
+    asyncio.run(main(workers))
