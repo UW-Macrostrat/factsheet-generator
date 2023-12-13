@@ -16,8 +16,8 @@ import torch
 import numpy as np
 from numpy.typing import NDArray
 
-import preprocessing
-from database_utils import retrieve_chunks, insert_chunk, store_facts
+import utils.preprocessing as preprocessing
+from utils.database_utils import retrieve_chunks, insert_chunk, store_facts
 
 from embeddings.huggingface import HuggingFaceEmbedding
 from llms.llamacpp import LlamaCPPLLM
@@ -28,9 +28,7 @@ DB_HOST = os.environ["DB_HOST"]
 GPU_ID = os.environ["GPU_ID"]
 HOST_NAME = os.environ["HOST_NAME"]
 CONNINFO = f"dbname=vector_db host={DB_HOST} user=admin password=admin port=5432"
-# SYSTEM_PROMPT = """
-# You are an AI assistant that helps people find information.
-# """
+
 SYSTEM_PROMPT = """
 You are a helpful and knowledgeable geologist, dedicated to reading and meticulously searching for details about specific geological stratigraphic units.
 If the context provided to you does not provide the answer to the question, you will say, "I don't know".
