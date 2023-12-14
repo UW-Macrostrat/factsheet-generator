@@ -19,7 +19,6 @@ RUN apt-get update \
     libc6-dev \
     libbz2-dev \
     software-properties-common \
-    curl \
     # Install python 3.10
     && apt-get update \
     && add-apt-repository ppa:deadsnakes/ppa \
@@ -33,10 +32,6 @@ RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 COPY requirements.txt ./
 RUN python3.10 -m pip install --no-cache-dir -r requirements.txt
 
-RUN apt-get install -y --no-install-recommends \
-    iputils-ping \
-    vim
-
 # Generate gRPC stub files
 COPY *.proto ./
 RUN python3.10 -m grpc_tools.protoc -I=. --python_out=. --grpc_python_out=. workerserver.proto
@@ -44,4 +39,5 @@ RUN python3.10 -m grpc_tools.protoc -I=. --python_out=. --grpc_python_out=. work
 # Copy app files
 COPY embeddings ./embeddings
 COPY llms ./llms
-COPY *.py ./
+COPY utils ./utils
+COPY app ./app
