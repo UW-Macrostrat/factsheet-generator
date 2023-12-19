@@ -94,14 +94,14 @@ The factsheet generator utilizes Retrieval Augmented Generation (RAG) over a dis
 ### System Design
 
 ##### RAG overview
-In the RAG pipeline, documents are first split into chunks (500-1000 tokens each). An embedding is then generated from each text chunk. These chunk-embedding pairs are stored in a pgvector database. After the entire dataset of documents is processed, similarity searches can be run to find relevant data given a query. 
+The RAG pipeline consists of two phases: indexing and retrieval. In the indexing phase, documents are first split into chunks (500-1000 tokens each). An embedding is then generated from each text chunk. These chunk-embedding pairs are stored in a [pgvector](https://github.com/pgvector/pgvector) database. After the entire dataset of documents is processed, similarity searches can be run to find relevant data given a query. 
 
-A set of queries is written beforehand for each fact that should be extracted. For each stratigraphic unit, relevant data along with a query is used as a prompt for a LLM to generate facts. 
+In the retrieval phase, a set of queries is written beforehand for each fact that should be extracted. For each stratigraphic unit, relevant data along with a query is used as a prompt for a LLM to generate facts. 
 
 <img src="images/RAG.png">
 
 ##### System overview
 
-Worker nodes running the LLM and embedding model are distributed across the COSMOS machines using Docker Swarm. Tasks are delegated to them by a master node which communicates through gRPC requests. Embeddings and the factsheets generated from the worker nodes are sent to a container running PostgreSQL with pgvector. 
+Worker nodes running the LLM and embedding model are distributed across machines using Docker Swarm. Tasks are delegated to them by a master node which communicates through gRPC requests. Embeddings and the factsheets generated from the worker nodes are sent to a container running PostgreSQL with pgvector. 
 
 <img src="images/system.png">
